@@ -56,13 +56,14 @@
 
         function exibirEstoque(estoque) {
             const container = document.getElementById('estoqueContainer');
-            let tabela = '<table><tr><th>Produto</th><th>Quantidade</th><th>Preço (R$)</th></tr>';
+            let tabela = '<table><tr><th>Produto</th><th>Quantidade</th><th>Preço (R$)</th><th>Imagem</th></tr>';
 
             estoque.forEach(item => {
                 tabela += `<tr>
                     <td>${item.produto}</td>
                     <td>${item.quantidade}</td>
                     <td>${item.preco.toFixed(2)}</td>
+                    <td><img src="${item.imagem}" alt="${item.produto}" style="width: 50px; height: auto;"></td>
                 </tr>`;
             });
 
@@ -76,7 +77,6 @@
             const nomeProduto = document.getElementById('buscaProduto').value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             const resultadoBusca = document.getElementById('resultadoBusca');
 
-            // Verifica se a entrada não está vazia
             if (nomeProduto === '') {
                 resultadoBusca.innerHTML = "<p>Por favor, insira um nome de produto.</p>";
                 resultadoBusca.classList.remove('hidden');
@@ -91,7 +91,8 @@
             if (produtoEncontrado) {
                 resultadoBusca.innerHTML = `<h2>${produtoEncontrado.produto}</h2>
                                             <p>Quantidade: ${produtoEncontrado.quantidade}</p>
-                                            <p>Preço: R$ ${produtoEncontrado.preco.toFixed(2)}</p>`;
+                                            <p>Preço: R$ ${produtoEncontrado.preco.toFixed(2)}</p>
+                                            <img src="${produtoEncontrado.imagem}" alt="${produtoEncontrado.produto}" style="width: 200px; height: auto;">`;
                 resultadoBusca.classList.remove('hidden');
             } else {
                 resultadoBusca.innerHTML = "<p>Produto não encontrado.</p>";
@@ -99,8 +100,7 @@
             }
         });
 
-        // Carrega o estoque inicialmente
-        carregarEstoque();
+        cargarEstoque(); // Carrega o estoque inicialmente
     </script>
 </body>
 </html>
