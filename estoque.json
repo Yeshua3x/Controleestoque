@@ -2,26 +2,31 @@
     {
         "produto": "Arroz",
         "quantidade": 30,
-        "preco": 2.50
+        "preco": 2.50,
+        "sinonimos": ["grão", "arroz integral"]
     },
     {
         "produto": "Feijão",
         "quantidade": 20,
-        "preco": 3.00
+        "preco": 3.00,
+        "sinonimos": ["feijão preto", "feijão carioca"]
     },
     {
-        "produto": "Macarrão",
+        "produto": "Açúcar",
         "quantidade": 10,
-        "preco": 2.00
+        "preco": 2.00,
+        "sinonimos": ["açúcar cristal", "açúcar refinado"]
     },
     {
         "produto": "Sal",
         "quantidade": 15,
-        "preco": 1.50
+        "preco": 1.50,
+        "sinonimos": ["sal de cozinha", "sal grosso"]
     },
     {
         "produto": "Óleo",
         "quantidade": 25,
-        "preco": 4.00
+        "preco": 4.00,
+        "sinonimos": ["óleo de soja", "óleo de girassol"]
     }
 ]
