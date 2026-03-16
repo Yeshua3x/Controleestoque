@@ -22,24 +22,33 @@
         th {
             background-color: #f2f2f2;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
     <h1>Controle de Estoque de Supermercado</h1>
+    
+    <input type="text" id="buscaProduto" placeholder="Digite o nome do produto">
+    <button id="buscarProduto">Buscar</button>
+    <div id="resultadoBusca" class="hidden"></div>
+
     <div id="estoqueContainer"></div>
     <button id="atualizarEstoque">Atualizar Estoque</button>
 
     <script>
         const url = 'estoque.json'; // URL para o arquivo JSON
+        let estoqueGlobal = [];
 
         async function carregarEstoque() {
             try {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Erro ao carregar o estoque');
                 
-                const estoque = await response.json();
-                exibirEstoque(estoque);
+                estoqueGlobal = await response.json();
+                exibirEstoque(estoqueGlobal);
             } catch (error) {
                 console.error(error);
             }
@@ -62,6 +71,22 @@
         }
 
         document.getElementById('atualizarEstoque').addEventListener('click', carregarEstoque);
+
+        document.getElementById('buscarProduto').addEventListener('click', () => {
+            const nomeProduto = document.getElementById('buscaProduto').value.toLowerCase();
+            const resultadoBusca = document.getElementById('resultadoBusca');
+            const produtoEncontrado = estoqueGlobal.find(item => item.produto.toLowerCase() === nomeProduto);
+
+            if (produtoEncontrado) {
+                resultadoBusca.innerHTML = `<h2>${produtoEncontrado.produto}</h2>
+                                            <p>Quantidade: ${produtoEncontrado.quantidade}</p>
+                                            <p>Preço: R$ ${produtoEncontrado.preco.toFixed(2)}</p>`;
+                resultadoBusca.classList.remove('hidden');
+            } else {
+                resultadoBusca.innerHTML = "<p>Produto não encontrado.</p>";
+                resultadoBusca.classList.remove('hidden');
+            }
+        });
 
         // Carrega o estoque inicialmente
         carregarEstoque();
