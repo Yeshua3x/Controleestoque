@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque de Supermercado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Controle de Estoque de Supermercado</h1>
+    <div id="estoqueContainer"></div>
+    <button id="atualizarEstoque">Atualizar Estoque</button>
+
+    <script>
+        const url = 'estoque.json'; // URL para o arquivo JSON
+
+        async function carregarEstoque() {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Erro ao carregar o estoque');
+                
+                const estoque = await response.json();
+                exibirEstoque(estoque);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function exibirEstoque(estoque) {
+            const container = document.getElementById('estoqueContainer');
+            let tabela = '<table><tr><th>Produto</th><th>Quantidade</th><th>Preço (R$)</th></tr>';
+
+            estoque.forEach(item => {
+                tabela += `<tr>
+                    <td>${item.produto}</td>
+                    <td>${item.quantidade}</td>
+                    <td>${item.preco.toFixed(2)}</td>
+                </tr>`;
+            });
+
+            tabela += '</table>';
+            container.innerHTML = tabela;
+        }
+
+        document.getElementById('atualizarEstoque').addEventListener('click', carregarEstoque);
+
+        // Carrega o estoque inicialmente
+        carregarEstoque();
+    </script>
+</body>
+</html>
