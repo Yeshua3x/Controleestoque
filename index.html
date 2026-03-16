@@ -73,9 +73,20 @@
         document.getElementById('atualizarEstoque').addEventListener('click', carregarEstoque);
 
         document.getElementById('buscarProduto').addEventListener('click', () => {
-            const nomeProduto = document.getElementById('buscaProduto').value.toLowerCase();
+            const nomeProduto = document.getElementById('buscaProduto').value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             const resultadoBusca = document.getElementById('resultadoBusca');
-            const produtoEncontrado = estoqueGlobal.find(item => item.produto.toLowerCase() === nomeProduto);
+
+            // Verifica se a entrada não está vazia
+            if (nomeProduto === '') {
+                resultadoBusca.innerHTML = "<p>Por favor, insira um nome de produto.</p>";
+                resultadoBusca.classList.remove('hidden');
+                return;
+            }
+
+            const produtoEncontrado = estoqueGlobal.find(item => 
+                item.produto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(nomeProduto) || 
+                item.sinonimos.some(sinonimo => sinonimo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(nomeProduto))
+            );
 
             if (produtoEncontrado) {
                 resultadoBusca.innerHTML = `<h2>${produtoEncontrado.produto}</h2>
