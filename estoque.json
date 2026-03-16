@@ -3,30 +3,35 @@
         "produto": "Arroz",
         "quantidade": 30,
         "preco": 2.50,
-        "sinonimos": ["grão", "arroz integral"]
+        "sinonimos": ["grão", "arroz integral"],
+        "imagem": "url_da_imagem_do_arroz.jpg"
     },
     {
         "produto": "Feijão",
         "quantidade": 20,
         "preco": 3.00,
-        "sinonimos": ["feijão preto", "feijão carioca"]
+        "sinonimos": ["feijão preto", "feijão carioca"],
+        "imagem": "url_da_imagem_do_feijao.jpg"
     },
     {
         "produto": "Açúcar",
         "quantidade": 10,
         "preco": 2.00,
-        "sinonimos": ["açúcar cristal", "açúcar refinado"]
+        "sinonimos": ["açúcar cristal", "açúcar refinado"],
+        "imagem": "url_da_imagem_do_acucar.jpg"
     },
     {
         "produto": "Sal",
         "quantidade": 15,
         "preco": 1.50,
-        "sinonimos": ["sal de cozinha", "sal grosso"]
+        "sinonimos": ["sal de cozinha", "sal grosso"],
+        "imagem": "url_da_imagem_do_sal.jpg"
     },
     {
         "produto": "Óleo",
         "quantidade": 25,
         "preco": 4.00,
-        "sinonimos": ["óleo de soja", "óleo de girassol"]
+        "sinonimos": ["óleo de soja", "óleo de girassol"],
+        "imagem": "url_da_imagem_do_oleo.jpg"
     }
 ]
