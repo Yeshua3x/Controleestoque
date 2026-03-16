@@ -5,12 +5,12 @@
         "preco": 2.50
     },
     {
-        "produto": "Feijão",
+        "produto": "Feijao",
         "quantidade": 20,
         "preco": 3.00
     },
     {
-        "produto": "Açúcar",
+        "produto": "Macarrao",
         "quantidade": 10,
         "preco": 2.00
     },
@@ -20,7 +20,7 @@
         "preco": 1.50
     },
     {
-        "produto": "Óleo",
+        "produto": "Oleo",
         "quantidade": 25,
         "preco": 4.00
     }
